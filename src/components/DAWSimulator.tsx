@@ -79,7 +79,9 @@ export function DAWSimulator() {
   const chatBottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (chatLog.length > 2 || isAiTyping) {
+      chatBottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }, [chatLog, isAiTyping]);
 
   // Preset Commands Base Catalog

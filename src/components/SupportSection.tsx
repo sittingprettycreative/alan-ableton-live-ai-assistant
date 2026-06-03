@@ -20,7 +20,9 @@ export function SupportSection() {
   const terminalBottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    terminalBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalLogs.length > 2) {
+      terminalBottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }, [terminalLogs]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
